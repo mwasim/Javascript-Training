@@ -27,4 +27,16 @@ const backpack = {
 
 console.log("The backpack obect: ", backpack); //output string first, and then object
 
+//Accessing object's properties using dot-notation
+console.log("pocketNum value (dot-notation): ", backpack.pocketNum);
+console.log("strap length L: ", backpack.strapLength.left);
+
+//Accessing object's properties using bracket-notation
+//It's more clunky but it gives us more control
+console.log("pocketNum value (bracket-notation): ", backpack["pocketNum"]);
+
+//brack-notation example with more control (we can query using variables)
+var query = "pocketNum"; //useful when properties names are non standard (e.g. property name starts with DOT, hyphen etc.)
+console.log("pocketNum value (bracket-notation - query): ", backpack[query]);
+
 export default backpack;

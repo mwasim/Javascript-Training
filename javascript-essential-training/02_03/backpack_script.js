@@ -25,4 +25,6 @@ const backpack = {
   },
 };
 
+console.log("The backpack obect: ", backpack); //output string first, and then object
+
 export default backpack;

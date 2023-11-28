@@ -20,6 +20,14 @@ const mobilePhone = {
     supportsBluetooth: true,
     supportsWifi: true,
   },
+  isWifiActive: false,
+  isBluetoothActive: false,
+  toggleWifi: function () {
+    this.isWifiActive = !this.isWifiActive;
+  },
+  toggleBluetooth: function () {
+    this.isBluetoothActive = !this.isBluetoothActive;
+  },
 };
 
 const markup = (mobilePhone) => {
@@ -28,7 +36,7 @@ const markup = (mobilePhone) => {
             <h1>${mobilePhone.name}</h1>
             <ul>
                 <li><strong>Color: </strong>${mobilePhone.color}</li>
-                <li><strong>OS: </strong>${mobilePhone.OS}</li>
+                <li><strong>OS: </strong>${mobilePhone.OS}</li>                
             </ul>
             <h2>Resolution</h2>
             <ul>
@@ -42,3 +50,7 @@ const markup = (mobilePhone) => {
 const main = document.createElement("main");
 main.innerHTML = markup(mobilePhone);
 document.body.appendChild(main);
+
+console.log(`WiFi Status: ${mobilePhone.isWifiActive}`);
+mobilePhone.toggleWifi();
+console.log(`WiFi Status: ${mobilePhone.isWifiActive}`);

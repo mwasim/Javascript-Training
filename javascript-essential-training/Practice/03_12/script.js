@@ -6,3 +6,19 @@
  * - Create several objects using the class.
  * - Test the objecs by calling their properties and using their methods in the console.
  */
+
+import MobilePhone from "./MobilePhone.js";
+
+const mobilePhone1 = new MobilePhone(
+  "Samsung A1",
+  "grey",
+  "Android",
+  1080,
+  1920,
+  true,
+  false
+);
+
+mobilePhone1.toggleBluetooth(); //toggle bluetooth status
+
+console.log(mobilePhone1);

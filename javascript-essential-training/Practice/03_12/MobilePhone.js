@@ -12,7 +12,8 @@ const MobilePhone = class {
     resWidth,
     resHeight,
     isWifiActive,
-    isBluetoothActive
+    isBluetoothActive,
+    dateAcquired
   ) {
     // Define properties:
     this.name = name;
@@ -24,6 +25,7 @@ const MobilePhone = class {
     };
     this.isWifiActive = isWifiActive;
     this.isBluetoothActive = isBluetoothActive;
+    this.dateAcquired = dateAcquired;
   }
 
   //Add methods like normal functions
@@ -33,6 +35,14 @@ const MobilePhone = class {
 
   toggleBluetooth() {
     this.isBluetoothActive = !this.isBluetoothActive;
+  }
+
+  mobilePhoneAgeInDays() {
+    let now = new Date();
+    let acquired = new Date(this.dateAcquired);
+    let elapsed = now - acquired; // milliseconds
+    let ageInDays = Math.floor(elapsed / (1000 * 3600 * 24)); //1000 - to seconds, 3600 to hours, 24 - to days
+    return ageInDays;
   }
 };
 

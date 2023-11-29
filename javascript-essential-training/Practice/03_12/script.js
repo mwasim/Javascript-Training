@@ -16,9 +16,11 @@ const mobilePhone1 = new MobilePhone(
   1080,
   1920,
   true,
-  false
+  false,
+  "October 29, 2023 12:00:00 PST"
 );
 
 mobilePhone1.toggleBluetooth(); //toggle bluetooth status
 
 console.log(mobilePhone1);
+console.log(`Mobile phone age: ${mobilePhone1.mobilePhoneAgeInDays()} days`);

@@ -3,7 +3,7 @@
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
  */
 
-var color = "purple";
+let color = "pink";
 
 document.querySelector(".left").style.backgroundColor = color;
 document.querySelector(".left .color-value").innerHTML = color;
@@ -11,9 +11,14 @@ document.querySelector(".left .color-value").innerHTML = color;
 color = "skyblue";
 
 function headingColor() {
-  color = "blue";
+  let color = "darkgreen";
   document.querySelector(".title").style.color = color;
+
+  let localScoppedColor = "purple";
+  console.log(localScoppedColor);
 }
+
+//console.log(localScoppedColor); //ERROR IF ACCESSED HERE
 
 headingColor();
 

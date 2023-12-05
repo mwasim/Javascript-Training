@@ -11,7 +11,7 @@ document.querySelector(".left .color-value").innerHTML = color;
 color = "skyblue";
 
 function headingColor() {
-  let color = "blue";
+  const color = "blue"; //const items once value is assigned, cannot be changed
   document.querySelector(".title").style.color = color;
 }
 

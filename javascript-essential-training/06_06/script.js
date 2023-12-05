@@ -7,12 +7,19 @@
 let stringDemo = "A string of text.";
 console.log("String:", stringDemo);
 
+//typeof
+let stringTypeDemo = "String text";
+console.log("Typeof(String): " + typeof stringTypeDemo);
+
 // Numbes:
 let integerDemo = 4;
 console.log("Integer:", integerDemo);
 
 let floatDemo = 5.6;
 console.log("Floating point number:", floatDemo);
+
+console.log("Typeof(INT): " + typeof integerDemo);
+console.log("Typeof(FLOAT): " + typeof floatDemo);
 
 // Boolean:
 let booleanDemo = true;

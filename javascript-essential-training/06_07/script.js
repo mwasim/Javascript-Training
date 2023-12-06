@@ -4,13 +4,17 @@
  */
 
 let a = 5;
-let b = 4;
+let b = "5";
 
 console.log(`let a: ${a} (${typeof a})`);
 console.log(`let b: ${b} (${typeof b})`);
 
 if (a == b) {
-  console.log(`Match! let a and let b are the same value.`);
+  console.log(`Match! let a(int) and let b(string) are the same value.`);
+}
+
+if (a === b) {
+  console.log(`Match! let a and let b are the same value and IDENTICAL.`);
 } else {
-  console.error(`No match: let a and let b are NOT same value.`);
+  console.error(`No match: let a and let b are NOT IDENTICAL data type`);
 }

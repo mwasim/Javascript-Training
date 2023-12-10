@@ -7,4 +7,4 @@ let item = "flashlight";
 
 const collection = ["Piggy", item, 5, true];
 
-console.log(collection);
+console.log(collection.length);

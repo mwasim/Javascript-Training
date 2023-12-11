@@ -7,4 +7,7 @@ let item = "flashlight";
 
 const collection = ["Piggy", item, 5, true];
 
-console.log(collection.length);
+collection[2] = "camera";
+collection[collection.length] = "new item";
+collection[9] = "item at far index";
+console.log(collection);

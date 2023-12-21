@@ -19,6 +19,14 @@ console.log("Do some math:", doSomeMath(5, 6));
 console.log("Do more math:", doMoreMath(5, 6));
 
 // Immediately Invoked Function Expression (IIFE)
+(function () {
+  let a = 6,
+    b = 5;
+  let c = doSomeMath(a, b);
+  console.log("Result: " + c);
+})();
+
+// Immediately Invoked Function Expression (IIFE)
 // (function () {
 //   let a = 4;
 //   let b = 6;

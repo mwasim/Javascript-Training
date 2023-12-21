@@ -16,9 +16,18 @@ const greenPack = {
     console.log("this.volume in the method:", this.volume);
     this.volume = volume;
     console.log("this.volume after update:", this.volume);
-    // (function () {
-    //   console.log("this.volume in nested function:", this.volume);
-    // })();
+    (function () {
+      console.log(
+        "this.volume in nested STANDARD function: (this refers to window.volume)",
+        this.volume
+      );
+    })();
+    (() => {
+      console.log(
+        "this.volume in nested ARROW function: (this points to the closest in scope volume which is this object)",
+        this.volume
+      );
+    })();
   },
 };
 

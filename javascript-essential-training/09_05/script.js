@@ -8,27 +8,31 @@ import backpackObjectArray from "./components/data.js";
 /**
  * Add event listener to the lid-toggle button.
  */
-const lidToggle = function () {
-   
+const lidToggle = function (event, button, newArgs) {
+  console.log(event);
+  console.log(button);
+  console.log(newArgs);
   // Find the current backpack object in backpackObjectArray
-  let backpackObject = backpackObjectArray.find( ({ id }) => id === this.parentElement.id );
-  
+  let backpackObject = backpackObjectArray.find(
+    ({ id }) => id === button.parentElement.id
+  );
+
   // Toggle lidOpen status
-  backpackObject.lidOpen == true 
-    ? backpackObject.lidOpen = false 
-    : backpackObject.lidOpen = true;
+  backpackObject.lidOpen == true
+    ? (backpackObject.lidOpen = false)
+    : (backpackObject.lidOpen = true);
 
   // Toggle button text
-  this.innerText == "Open lid" 
-    ? this.innerText = "Close lid" 
-    : this.innerText = "Open lid";
+  button.innerText == "Open lid"
+    ? (button.innerText = "Close lid")
+    : (button.innerText = "Open lid");
 
   // Set visible property status text
-  let status = this.parentElement.querySelector(".backpack__lid span");
+  let status = button.parentElement.querySelector(".backpack__lid span");
   status.innerText == "closed"
     ? (status.innerText = "open")
     : (status.innerText = "closed");
-}
+};
 
 /**
  * - Loop through backpackObjectArray
@@ -69,13 +73,26 @@ const backpackList = backpackObjectArray.map((backpack) => {
     <button class="lid-toggle">Open lid</button>
   `;
 
-  const button = backpackArticle.querySelector(".lid-toggle")
-  const status = backpackArticle.querySelector(".backpack__lid span")
+  const button = backpackArticle.querySelector(".lid-toggle");
+  //const status = backpackArticle.querySelector(".backpack__lid span");
+
+  //button.addEventListener("click", lidToggle);
+
+  //To pass custom arguments to lidToggle?
+  let newArgs = "This is new args";
 
   button.addEventListener("click", (event) => {
-    console.log(event)
-    status.innerText === "open" ? status.innerText = "closed" : status.innerText = "open"
-  })
+    lidToggle(event, button, newArgs);
+  });
+
+  /*
+  button.addEventListener("click", function (event) {
+    console.log(event);
+    status.innerText === "open"
+      ? (status.innerText = "closed")
+      : (status.innerText = "open");
+    console.log(this); //this does not work with arrow funciton, so we've used the standard function
+  });*/
 
   return backpackArticle;
 });

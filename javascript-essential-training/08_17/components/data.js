@@ -11,7 +11,7 @@ const everydayPack = new Backpack(
   26,
   26,
   false,
-  "December 5, 2018 15:00:00 PST",
+  "December 5, 2022 15:00:00 PST",
   "../assets/images/everyday.svg"
 );
 
@@ -25,7 +25,7 @@ const frogPack = new Backpack(
   10,
   10,
   false,
-  "October 16, 2019 15:00:00 PST",
+  "October 16, 2023 15:00:00 PST",
   "../assets/images/frog.svg"
 );
 

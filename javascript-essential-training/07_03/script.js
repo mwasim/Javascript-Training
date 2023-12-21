@@ -25,6 +25,9 @@ console.log(backpackContents.join(", "));
 console.log("Long Items:" + longItems);
 console.log("Long Items:" + longItems1);
 
+backpackContents.sort();
+console.log(backpackContents);
+
 // backpackContents.forEach(function (item) {
 //   item = `<li>${item}</li>`;
 //   console.log(item);

@@ -1,1 +1,1 @@
-# JavascriptProjects
+# Modern Javascript Training

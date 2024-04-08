@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}\\bigo-and-scalability.js"
+      "program": "${workspaceFolder}\\bigo-constant.js"
     }
   ]
 }

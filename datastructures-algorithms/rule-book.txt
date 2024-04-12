@@ -1,0 +1,14 @@
+RULE BOOK:
+
+RULE-1: Worst Case
+    RULE-2: Remove Constants
+        RULE-3: Different terms for Inputs
+            RULE-4: Drop Non Dominants
+
+
+Explanation:
+RULE-1: Worst Case:
+    When calculating Big O, we always think about the worst case.
+    EXAMPLE: 
+    In findNemo example, let's say loop executes 10 times to find nemo, but nemo is found on 4th iteration, and we exist the loop. 
+    Still, in the worst case, nemo could be the last item (10th item).

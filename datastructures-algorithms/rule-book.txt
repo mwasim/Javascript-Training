@@ -12,3 +12,15 @@ RULE-1: Worst Case:
     EXAMPLE: 
     In findNemo example, let's say loop executes 10 times to find nemo, but nemo is found on 4th iteration, and we exist the loop. 
     Still, in the worst case, nemo could be the last item (10th item).
+
+RULE-2: Remove Constants:
+        When calculating Big O, we drop constants.
+    Example:
+        If a function as Big O = O(1 + n/2 + 100)
+         Based on this Rule, we remove/drop constants, so it becomes
+        O(n/2 + 1) 
+        As n gets larger and larger, dividing by 2 has significanly descreasingly significant
+        So, it becomes O(n)
+        
+        Other examples:
+        - O(a + 5000000) becomes O(a) [simply drop constants]

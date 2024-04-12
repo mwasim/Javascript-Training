@@ -30,7 +30,7 @@ let largeArray = new Array(10000).fill("nemo");
   :
   n => O(n) --> Linear Time [Most common] (n means number of inputs or number of items in the array)
 
-  Big O does not measure the algorith in seconds, instead we focus how quickly our run-time grows using the size of the input
+  Big O does not measure the algorith in seconds, instead we focus how quickly our run-time grows based on the size of the input
 */
 function findNemo(array) {
   //let t0 = performance.now();

@@ -21,6 +21,7 @@ const everyone = [
 
 function findNemo(array) {
   for (let i = 0; i < array.length; i++) {
+    console.log("running...");
     if (array[i] === "nemo") {
       console.log("Found NEMO!");
 
@@ -32,3 +33,5 @@ function findNemo(array) {
     }
   }
 }
+
+findNemo(everyone);

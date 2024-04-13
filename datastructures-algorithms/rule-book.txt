@@ -24,3 +24,16 @@ RULE-2: Remove Constants:
         
         Other examples:
         - O(a + 5000000) becomes O(a) [simply drop constants]
+
+
+RULE-3: Different terms for Inputs
+    This is the trickiest part of the interview that lot of people make mistakes on. But once, you understand it, it becomes really easy to spot.
+    EXAMPLE:
+    With different terms as parameters (inputs e.g. a, b),
+    most people, will still say, it's Big O = O(n), but it's INCORRECT.
+
+    Because 3rd Rule says different terms for inputs!
+    In this example, 
+        boxes input => can be 100 items
+        boxes2 input => can be just 1 item,
+        So, Big O for this example = O(a + b) OR O(n + m) OR O(boxes1 + boxes2)

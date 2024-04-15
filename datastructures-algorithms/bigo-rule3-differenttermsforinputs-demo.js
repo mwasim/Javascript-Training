@@ -36,3 +36,13 @@ function compressBoxesTwice(boxes, boxes2) {
         So, Big O for this example = O(a + b) OR O(n + m) OR O(boxes1 + boxes2)
 
 */
+
+//AND When we've nested loops as in the below example,
+//Big O = O(a * b) =>For any nested inputs, we multiply
+function compressBoxesNested(boxes, boxes2) {
+  boxes.forEach((firstBox) => {
+    boxes2.forEach((secondBox) => {
+      console.log(firstBox, secondBox); //O(a * b)
+    });
+  });
+}

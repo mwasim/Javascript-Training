@@ -1,0 +1,5 @@
+Big O = O(n!) = FACTORIAL TIME.
+    It means that we're adding a nested loop for every input. It sounds pretty terrible, doesn't ?
+    It's the most expensive of all, and it's the steepest of them all. This is called Factorial Time.
+
+    If you've any code with this Big O notation, you're definitely doing something wrong.

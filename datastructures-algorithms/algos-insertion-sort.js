@@ -34,6 +34,36 @@ const insertionSort = (array) => {
 };
 
 const numbers = [5, 2, 4, 6, 1, 3];
-//console.log(`Before Sort (insertionSort)`, numbers);
+console.log(`ARRAY TO SORT: `, numbers);
 insertionSort(numbers);
 //console.log(`After Sort (insertionSort)`, numbers);
+
+const numbers2 = [31, 41, 59, 26, 41, 58];
+console.log(`ARRAY TO SORT: `, numbers2);
+insertionSort(numbers2);
+
+/*
+  2.1-3: 
+  Rewrite the INSERTION-SORT procedure to sort into monotonically 
+  decreasing instead of monotonically increasing order.
+*/
+
+const insertionSortMonotonicallyDecreasing = (array) => {
+  for (let i = 1; i < array.length; i++) {
+    let current = array[i];
+
+    let j = i - 1;
+    while (j >= 0 && array[j] < current) {
+      array[j + 1] = array[j];
+      j--;
+    }
+
+    array[j + 1] = current;
+
+    console.log(`Iteration ${i}: `, array);
+  }
+};
+
+const numbers3 = [5, 2, 4, 6, 1, 3];
+console.log(`Array to sort into monotonically decreasing order: `, numbers3);
+insertionSortMonotonicallyDecreasing(numbers3);

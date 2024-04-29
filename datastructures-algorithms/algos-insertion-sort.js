@@ -10,6 +10,20 @@
         A[j + 1] = A[j]
         j = j – 1
     A[j + 1] = key
+
+    
+    
+    Time complexity for insertion sort:
+    Best Case - Already sorted array:
+    Big O = O(n)
+
+    Worst Case:
+    the total number of operations (comparisons/shifts) in the worst case is the sum of 
+      1 + 2 + 3 + ... + (n-1) 
+      This is a well known series in mathematics that can be written like this:
+      (n*(n-1))/2 => n^2 (taking dominating terms only) 
+      
+      Big O=> n^2      
 */
 
 const insertionSort = (array) => {

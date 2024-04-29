@@ -1,0 +1,14 @@
+Which code is the best?
+
+1. READABLE
+    Should be readable to others.
+
+2. Speed
+    Should have efficient time-complexity.
+
+3. Memory
+    We've limited memory. We use Big O to talk about SPACE COMPLEXITY.
+
+Most programming code solutions have tradeoff between speed and memory.
+    You want to go fast, you might have to sacrifice more memory.
+    You want less memory, you might want to have less speed.

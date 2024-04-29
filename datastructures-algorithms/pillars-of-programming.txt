@@ -11,4 +11,19 @@ Which code is the best?
 
 Most programming code solutions have tradeoff between speed and memory.
     You want to go fast, you might have to sacrifice more memory.
-    You want less memory, you might want to have less speed.
+    You want less memory, you might want to have less speed. 
+
+Heap & Stack:
+    When a program executes, it has two ways to remember things.
+        Heap: Usually where we store variables.
+        Stack: Where we keep track of our function calls.
+
+SPACE COMPLEXITY:
+    Talking about Space Complexity (Memory) is very similar to talking about the Time Cost.
+    - We simply look at the size of the input, and see how many new variables or new memory we're allocating. 
+    - How much memory is being used.
+    - What causes Space complexity?-
+        Adding Variables
+        Adding Data Structures
+        Function Call
+        Allocations

@@ -14,7 +14,6 @@ const taskData = JSON.parse(localStorage.getItem("data")) || [];
 let currentTask = {};
 
 const addOrUpdateTask = () => {
-  addOrUpdateTaskBtn.innerText = "Add Task";
   const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
   const taskObj = {
     id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
@@ -57,8 +56,6 @@ const deleteTask = (buttonEl) => {
 
   buttonEl.parentElement.remove();
   taskData.splice(dataArrIndex, 1);
-
-  //We've already removed item from the taskData array using splice method, so, we simply update it in the localStorage
   localStorage.setItem("data", JSON.stringify(taskData));
 };
 
@@ -79,6 +76,7 @@ const editTask = (buttonEl) => {
 };
 
 const reset = () => {
+  addOrUpdateTaskBtn.innerText = "Add Task";
   titleInput.value = "";
   dateInput.value = "";
   descriptionInput.value = "";
@@ -121,23 +119,3 @@ taskForm.addEventListener("submit", (e) => {
 
   addOrUpdateTask();
 });
-
-/*
-Demo code used to Test adding, and remove items to/from local storage.
-
-const myTaskArr = [
-  { task: "Walk the Dog", date: "22-04-2022" },
-  { task: "Read some books", date: "02-11-2023" },
-  { task: "Watch football", date: "10-08-2021" },
-];
-
-localStorage.setItem("data", JSON.stringify(myTaskArr));
-
-localStorage.clear();
-
-const getTaskArr = localStorage.getItem("data");
-console.log(getTaskArr);
-
-const getTaskArrObj = JSON.parse(localStorage.getItem("data"));
-console.log(getTaskArrObj);
-*/

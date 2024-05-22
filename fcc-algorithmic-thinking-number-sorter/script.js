@@ -7,7 +7,14 @@ const sortInputArray = (event) => {
     ...document.getElementsByClassName("values-dropdown"),
   ].map((dropdown) => Number(dropdown.value));
 
-  const sortedValues = insertionSort(inputValues);
+  //const sortedValues = bubbleSort(inputValues);
+  //const sortedValues = selectionSort(inputValues);
+  //const sortedValues = insertionSort(inputValues);
+
+  //sort numbers using built-in sort method
+  const sortedValues = inputValues.sort((a, b) => {
+    return a - b;
+  });
 
   updateUI(sortedValues);
 };

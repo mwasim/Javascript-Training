@@ -26,6 +26,22 @@ const charRange = (start, end) =>
     String.fromCharCode(code)
   );
 
+const evalFormula = (x, cells) => {
+  const idToText = (id) => cells.find((cell) => cell.id === id).value;
+  const rangeRegex = /([A-J])([1-9][0-9]?):([A-J])([1-9][0-9]?)/gi;
+  const rangeFromString = (num1, num2) => range(parseInt(num1), parseInt(num2));
+  const elemValue = (num) => (character) => idToText(character + num);
+  const addCharacters = (character1) => (character2) => (num) =>
+    charRange(character1, character2).map(elemValue(num));
+  const rangeExpanded = x.replace(
+    rangeRegex,
+    (_match, char1, num1, char2, num2) =>
+      rangeFromString(num1, num2).map(addCharacters(char1)(char2))
+  );
+  const cellRegex = /[A-J][1-9][0-9]?/gi;
+  const cellExpanded = rangeExpanded.replace(cellRegex, (match) => {});
+};
+
 window.onload = () => {
   const container = document.getElementById("container");
   const createLabel = (name) => {
@@ -51,4 +67,7 @@ window.onload = () => {
 
 const update = (event) => {
   const element = event.target;
+  const value = element.value.replace(/\s/g, "");
+  if (!value.includes(element.id) && value.startsWith("=")) {
+  }
 };

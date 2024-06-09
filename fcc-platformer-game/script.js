@@ -11,7 +11,7 @@ let isCheckpointCollisionDetectionActive = true;
 
 const proportionalSize = (size) => {
   return innerHeight < 500 ? Math.ceil((size / 500) * innerHeight) : size;
-}
+};
 
 class Player {
   constructor() {
@@ -30,7 +30,7 @@ class Player {
     ctx.fillStyle = "#99c9ff";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
-  
+
   update() {
     this.draw();
     this.position.x += this.velocity.x;
@@ -104,7 +104,10 @@ const animate = () => {
 
   if (keys.rightKey.pressed && player.position.x < proportionalSize(400)) {
     player.velocity.x = 5;
-  } else if (keys.leftKey.pressed && player.position.x > proportionalSize(100)) {
+  } else if (
+    keys.leftKey.pressed &&
+    player.position.x > proportionalSize(100)
+  ) {
     player.velocity.x = -5;
   } else {
     player.velocity.x = 0;
@@ -120,17 +123,30 @@ const animate = () => {
     }
   }
 
+  platforms.forEach((platform) => {
+    const collisionDetectionRules = [
+      player.position.y + player.height <= platform.position.y,
+      player.position.y + player.height + player.velocity.y >=
+        platform.position.y,
+      player.position.x >= platform.position.x - player.width / 2,
+      player.position.x <=
+        platform.position.x + platform.width - player.width / 3,
+    ];
 
-}
-
+    if (collisionDetectionRules.every((rule) => rule)) {
+      player.velocity.y = 0;
+      return;
+    }
+  });
+};
 
 const keys = {
   rightKey: {
-    pressed: false
+    pressed: false,
   },
   leftKey: {
-    pressed: false
-  }
+    pressed: false,
+  },
 };
 
 const movePlayer = (key, xVelocity, isPressed) => {
@@ -160,13 +176,13 @@ const movePlayer = (key, xVelocity, isPressed) => {
       }
       player.velocity.x += xVelocity;
   }
-}
+};
 
 const startGame = () => {
   canvas.style.display = "block";
   startScreen.style.display = "none";
   animate();
-}
+};
 
 startBtn.addEventListener("click", startGame);
 

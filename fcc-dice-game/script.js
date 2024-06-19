@@ -14,8 +14,8 @@ let diceValuesArr = [];
 let isModalShowing = false;
 let score = 0;
 let totalScore = 0;
-let round = 1; 
-let rolls = 0; 
+let round = 1;
+let rolls = 0;
 
 const rollDice = () => {
   diceValuesArr = [];
@@ -23,7 +23,7 @@ const rollDice = () => {
   for (let i = 0; i < 5; i++) {
     const randomDice = Math.floor(Math.random() * 6) + 1;
     diceValuesArr.push(randomDice);
-  };
+  }
 
   listOfAllDice.forEach((dice, index) => {
     dice.textContent = diceValuesArr[index];
@@ -95,6 +95,26 @@ const resetRadioOption = () => {
   });
 };
 
+const resetGame = () => {
+  diceValuesArr = [0, 0, 0, 0, 0];
+  score = 0;
+  totalScore = 0;
+  round = 1;
+  rolls = 0;
+
+  listOfAllDice.forEach((dice, index) => {
+    dice.textContent = diceValuesArr[index];
+  });
+
+  totalScoreText.textContent = totalScore;
+  scoreHistory.innerHTML = "";
+
+  currentRoundRollsText.textContent = rolls;
+  currentRoundText.textContent = round;
+
+  resetRadioOption();
+};
+
 rollDiceBtn.addEventListener("click", () => {
   if (rolls === 3) {
     alert("You have made three rolls this round. Please select a score.");
@@ -137,6 +157,13 @@ keepScoreBtn.addEventListener("click", () => {
     updateStats();
     resetRadioOption();
     updateScore(selectedValue, achieved);
+    if (round > 6) {
+      setTimeout(() => {
+        alert(`Game Over! Your total score is ${totalScore}`);
+        resetGame();
+      }, 500);
+    }
+  } else {
+    alert("Please select an option or roll the dice");
   }
-
 });

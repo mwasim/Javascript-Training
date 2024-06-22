@@ -9,18 +9,18 @@
   <body>
     <div class="container">
       <h1>Cash Register</h1>
+      <div id="change-due"></div>
       <div class="input-section">
         <label for="cash">Enter cash from customer:</label>
         <input type="number" id="cash" placeholder="Enter amount" />
       </div>
       <div class="purchase-section">
-        <label for="purchase-input">Purchase:</label>
-        <input type="number" id="purchase-input" placeholder="Enter amount" />
-        <button id="purchase-btn">Calculate Change</button>
+        <button id="purchase-btn">Purchase</button>
       </div>
-      <div id="change-due" class="result-section">
-        <h2>Change Due</h2>
+      <div class="result-section">
+        <p id="price-screen" class="price-screen"></p>
         <div id="result"></div>
+        <div id="cash-drawer-display" class="cash-drawer-display"></div>
       </div>
     </div>
     <script src="script.js"></script>

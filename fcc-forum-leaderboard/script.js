@@ -1,5 +1,4 @@
-const forumLatest =
-  "https://cdn.freecodecamp.org/curriculum/forum-latest/latest.json";
+const forumLatest = "https://cdn.freecodecamp.org/curriculum/forum-latest/latest.json";
 const forumTopicUrl = "https://forum.freecodecamp.org/t/";
 const forumCategoryUrl = "https://forum.freecodecamp.org/c/";
 const avatarUrl = "https://sea1.discourse-cdn.com/freecodecamp";
@@ -71,6 +70,21 @@ const viewCount = (views) => {
   return views;
 };
 
+const avatars = (posters, users) => {
+  return posters
+    .map((poster) => {
+      const user = users.find((user) => user.id === poster.user_id);
+      if (user) {
+        const avatar = user.avatar_template.replace(/{size}/, 30);
+        const userAvatarUrl = avatar.startsWith("/user_avatar/")
+          ? avatarUrl.concat(avatar)
+          : avatar;
+        return `<img src="${userAvatarUrl}" alt="${user.name}" />`;
+      }
+    })
+    .join("");
+};
+
 const fetchData = async () => {
   try {
     const res = await fetch(forumLatest);
@@ -87,30 +101,33 @@ const showLatestPosts = (data) => {
   const { topic_list, users } = data;
   const { topics } = topic_list;
 
-  postsContainer.innerHTML = topics
-    .map((item) => {
-      const {
-        id,
-        title,
-        views,
-        posts_count,
-        slug,
-        posters,
-        category_id,
-        bumped_at,
-      } = item;
+  postsContainer.innerHTML = topics.map((item) => {
+    const {
+      id,
+      title,
+      views,
+      posts_count,
+      slug,
+      posters,
+      category_id,
+      bumped_at,
+    } = item;
 
-      return `
+    return `
     <tr>
       <td>
-        <p class="post-title">${title}</p>
+        <a class="post-title" target="_blank" href="${forumTopicUrl}${slug}/${id}">${title}</a>
+
         ${forumCategory(category_id)}
       </td>
-      <td></td>
+      <td>
+        <div class="avatar-container">
+          ${avatars(posters, users)}
+        </div>
+      </td>
       <td>${posts_count - 1}</td>
       <td>${viewCount(views)}</td>
       <td>${timeAgo(bumped_at)}</td>
     </tr>`;
-    })
-    .join("");
+  }).join("");
 };

@@ -14,6 +14,7 @@
           type="text"
           id="search-input"
           placeholder="Enter Pokémon name or ID"
+          required
         />
         <button id="search-button">Search</button>
       </div>
@@ -22,14 +23,14 @@
         <p>ID: <span id="pokemon-id"></span></p>
         <p>Weight: <span id="weight"></span></p>
         <p>Height: <span id="height"></span></p>
-        <p>Types: <span id="types"></span></p>
         <p>HP: <span id="hp"></span></p>
         <p>Attack: <span id="attack"></span></p>
         <p>Defense: <span id="defense"></span></p>
         <p>Special Attack: <span id="special-attack"></span></p>
         <p>Special Defense: <span id="special-defense"></span></p>
         <p>Speed: <span id="speed"></span></p>
-        <img id="sprite" alt="Pokémon Sprite" />
+        <p>Types: <div id="types"></div></p>
+        <div id="sprite-container" class="sprite-container"></div>
       </div>
     </div>
     <script src="./script.js"></script>

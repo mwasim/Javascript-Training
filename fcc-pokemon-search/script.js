@@ -11,7 +11,7 @@ const defense = document.getElementById("defense");
 const specialAttack = document.getElementById("special-attack");
 const specialDefense = document.getElementById("special-defense");
 const speed = document.getElementById("speed");
-const sprite = document.getElementById("sprite");
+const spriteContainer = document.getElementById("sprite-container");
 
 searchButton.addEventListener("click", () => {
   const searchTerm = searchInput.value.toLowerCase().replace(/[^a-z0-9]/g, "-");
@@ -23,9 +23,9 @@ searchButton.addEventListener("click", () => {
       pokemonId.textContent = `#${data.id}`;
       weight.textContent = `Weight: ${data.weight}`;
       height.textContent = `Height: ${data.height}`;
-      types.textContent = data.types
-        .map((t) => t.type.name.toUpperCase())
-        .join(", ");
+      types.innerHTML = data.types
+        .map((t) => `<span class="type ${t.type.name}">${t.type.name}</span>`)
+        .join("");
       hp.textContent = data.stats.find(
         (stat) => stat.stat.name === "hp"
       ).base_stat;
@@ -44,9 +44,32 @@ searchButton.addEventListener("click", () => {
       speed.textContent = data.stats.find(
         (stat) => stat.stat.name === "speed"
       ).base_stat;
-      sprite.src = data.sprites.front_default;
+      spriteContainer.innerHTML = `
+      <img id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">
+    `;
     })
-    .catch(() => {
-      alert("Pokémon not found");
+    .catch((error) => {
+      resetUI();
+      alert(`Pokémon not found`);
+      console.log(error);
     });
 });
+
+const resetUI = () => {
+  const sprite = document.getElementById("sprite");
+  if (sprite) sprite.remove();
+
+  // reset stats
+  pokemonName.textContent = "";
+  pokemonId.textContent = "";
+  types.innerHTML = "";
+  height.textContent = "";
+  weight.textContent = "";
+  hp.textContent = "";
+  attack.textContent = "";
+  defense.textContent = "";
+  specialAttack.textContent = "";
+  specialDefense.textContent = "";
+  speed.textContent = "";
+  spriteContainer.innerHTML = "";
+};

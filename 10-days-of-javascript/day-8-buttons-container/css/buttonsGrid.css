@@ -1,0 +1,11 @@
+#btns {
+  width: 75%;
+  margin: auto;
+}
+
+#btns button {
+  position: relative;
+  width: 30%;
+  height: 48px;
+  font-size: 24px;
+}

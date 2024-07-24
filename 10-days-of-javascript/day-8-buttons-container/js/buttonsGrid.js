@@ -1,13 +1,8 @@
 const btn5 = document.getElementById("btn5");
 
-const btn1 = document.getElementById("btn1");
-const btn2 = document.getElementById("btn2");
-const btn3 = document.getElementById("btn3");
-const btn4 = document.getElementById("btn4");
-const btn6 = document.getElementById("btn6");
-const btn7 = document.getElementById("btn7");
-const btn8 = document.getElementById("btn8");
-const btn9 = document.getElementById("btn9");
+const buttonsOrderArr = ["4", "7", "8", "9", "6", "3", "2", "1"];
+//const buttonsOrderArr = ["1", "2", "3", "6", "9", "8", "7", "4"].reverse();
+const buttonIdArr = buttonsOrderArr.slice();
 
 const rotateButtonsText = () => {
   //ORDER OF ROTATION
@@ -23,30 +18,18 @@ const rotateButtonsText = () => {
         2 <= 1
 
     */
-  let btnText = btn1.innerHTML;
-  let btn1Text = btnText;
-  btn1.innerHTML = btn4.innerHTML;
 
-  btnText = btn4.innerHTML;
-  btn4.innerHTML = btn7.innerHTML;
+  //console.log("BEFORE SHIFT: ", buttonsOrderArr);
+  const btnsCount = buttonsOrderArr.length;
+  const element = buttonsOrderArr.shift();
+  buttonsOrderArr.push(element);
+  // console.log("AFTER SHIFT: ", buttonsOrderArr);
+  // console.log("Button IDs", buttonIdArr);
 
-  btnText = btn7.innerHTML;
-  btn7.innerHTML = btn8.innerHTML;
-
-  btnText = btn8.innerHTML;
-  btn8.innerHTML = btn9.innerHTML;
-
-  btnText = btn9.innerHTML;
-  btn9.innerHTML = btn6.innerHTML;
-
-  btnText = btn6.innerHTML;
-  btn6.innerHTML = btn3.innerHTML;
-
-  btnText = btn3.innerHTML;
-  btn3.innerHTML = btn2.innerHTML;
-
-  btnText = btn2.innerHTML;
-  btn2.innerHTML = btn1Text;
+  for (let i = 0; i < btnsCount; i++) {
+    document.getElementById(`btn${buttonIdArr[i]}`).innerHTML =
+      buttonsOrderArr[i];
+  }
 };
 
 btn5.addEventListener("click", rotateButtonsText);

@@ -4,7 +4,7 @@
 
     If the book is returned on or before the expected return date, no fine will be charged (i.e.: fine=0).
     If the book is returned after the expected return day but still within the same calendar month and year as the expected return date, fine = 15 Hackos x (the number of days late).
-    If the book is returned after the expected return month but still within the same calendar year as the expected return date, the  fine = 500 Hackos x (the number of days late).
+    If the book is returned after the expected return month but still within the same calendar year as the expected return date, the  fine = 500 Hackos x (the number of months late).
     If the book is returned after the calendar year in which it was expected, there is a fixed fine of 1000 Hackos.
 
     Example
@@ -59,17 +59,33 @@ function calculateFine(returnDate, dueDate) {
   const dueDateObj = new Date(dueYear, dueMonth - 1, dueDay);
 
   const timeDiff = returnDateObj.getTime() - dueDateObj.getTime();
-  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  const daysDiff = Math.max(0, Math.ceil(timeDiff / (1000 * 3600 * 24)));
 
-  if (daysDiff <= 0) {
-    return 0; // No fine if returned on or before due date
-  } else if (returnYear === dueYear && returnMonth === dueMonth) {
+  if (returnYear < dueYear) {
+    return 0; // No fine if returned before the due year
+  } else if (returnYear === dueYear && returnMonth < dueMonth) {
+    return 0; // No fine if returned before the due month
+  } else if (
+    returnYear === dueYear &&
+    returnMonth === dueMonth &&
+    returnDay <= dueDay
+  ) {
+    return 0; // No fine if returned on or before the due date
+  } else if (
+    returnYear === dueYear &&
+    returnMonth === dueMonth &&
+    returnDay > dueDay
+  ) {
     return 15 * daysDiff; // Fine of 15 Hackos per day late
-  } else if (returnYear === dueYear) {
-    return 500 * daysDiff; // Fine of 500 Hackos per day late
+  } else if (returnYear === dueYear && returnMonth > dueMonth) {
+    const monthsDiff = returnMonth - dueMonth;
+    return 500 * monthsDiff; // Fine of 500 Hackos per month late
   } else {
     return 10000; // Fixed fine of 10000 Hackos
   }
 }
 
-processData("9 6 2015\n6 6 2015");
+const returnedDate = "31 8 2004";
+const dueDate = "20 1 2004";
+
+processData(`${returnedDate}\n${dueDate}`);

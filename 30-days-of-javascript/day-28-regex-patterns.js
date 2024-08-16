@@ -17,18 +17,26 @@
     Print an alphabetically-ordered list of first names for every user with a gmail account. Each name must be printed on a new line.
 */
 
-function main_printGMailUsers() {
-  const N = parseInt(readLine().trim(), 10);
+function main_printGMailUsers(input) {
+  const inputArr = input.split("\n");
+  const N = parseInt(inputArr[0]); //parseInt(readLine().trim(), 10);
   let gmailUsers = [];
 
-  for (let NItr = 0; NItr < N; NItr++) {
-    const firstMultipleInput = readLine().replace(/\s+$/g, "").split(" ");
+  for (let NItr = 1; NItr <= N; NItr++) {
+    const firstMultipleInput = inputArr[NItr].replace(/\s+$/g, "").split(" "); //readLine().replace(/\s+$/g, "").split(" ");
 
     const firstName = firstMultipleInput[0];
 
     const emailID = firstMultipleInput[1];
 
-    if (emailID.endsWith("@gmail.com")) {
+    //console.log(firstMultipleInput);
+
+    // if (emailID.endsWith("@gmail.com")) {
+    //   gmailUsers.push(firstName);
+    // }
+
+    //regular expressions based solution
+    if (/\w+@gmail\.com$/.test(emailID)) {
       gmailUsers.push(firstName);
     }
   }
@@ -42,3 +50,5 @@ function main_printGMailUsers() {
 
 const input =
   "6\nriya riya@gmail.com\njulia julia@julia.me\njulia sjulia@gmail.com\njulia julia@gmail.com\nsamantha samantha@gmail.com\ntanya tanya@gmail.com";
+
+main_printGMailUsers(input);

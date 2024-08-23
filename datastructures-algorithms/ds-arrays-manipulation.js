@@ -37,6 +37,30 @@ function arrayManipulation(n, queries) {
   //   console.log("n", n);
   //   console.log("queries", queries);
 
+  //Code optimized using prefix sum approach
+  // Create an array of size n+1, initialized with 0s
+  let arr = new Array(n + 1).fill(0);
+
+  // Loop through each query
+  for (let query of queries) {
+    let [a, b, k] = query;
+    arr[a - 1] += k;
+    arr[b] -= k;
+  }
+
+  console.log(arr);
+
+  // Calculate the prefix sum
+  let max = 0;
+  let current = 0;
+  for (let i = 0; i < n; i++) {
+    current += arr[i];
+    max = Math.max(max, current);
+  }
+
+  return max;
+
+  /*
   // Create an array of size n, initialized with 0s
   const arr = new Array(n).fill(0);
 
@@ -53,7 +77,7 @@ function arrayManipulation(n, queries) {
 
   const result = Math.max(...arr);
 
-  return result;
+  return result;*/
 }
 
 function main_arrayManipulation(input) {

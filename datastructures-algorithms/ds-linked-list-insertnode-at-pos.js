@@ -58,28 +58,6 @@ function printSinglyLinkedList(node, sep, ws) {
 
 function insertNodeAtPosition(llist, data, position) {
   // Write your code here
-  // Create a new node with the given data
-  const newNode = new SinglyLinkedListNode(data);
-
-  // If the list is empty or the position is 0, insert the new node at the head
-  if (llist == null || position == 0) {
-    newNode.next = llist;
-    return newNode;
-  }
-
-  // Traverse the list to the position before the insertion point
-  let current = llist;
-  let i = 0;
-  while (i < position - 1 && current.next != null) {
-    current = current.next;
-    i++;
-  }
-
-  // Insert the new node at the desired position
-  newNode.next = current.next;
-  current.next = newNode;
-
-  return llist;
 }
 
 function main() {

@@ -37,13 +37,12 @@ function printSinglyLinkedList(node, sep, ws) {
 }
 
 /*
- * Complete the 'insertNodeAtPosition' function below.
+ * Complete the 'deleteNode' function below.
  *
  * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
  * The function accepts following parameters:
  *  1. INTEGER_SINGLY_LINKED_LIST llist
- *  2. INTEGER data
- *  3. INTEGER position
+ *  2. INTEGER position
  */
 
 /*
@@ -56,29 +55,34 @@ function printSinglyLinkedList(node, sep, ws) {
  *
  */
 
-function insertNodeAtPosition(llist, data, position) {
-  // Create a new node with the given data
-  const newNode = new SinglyLinkedListNode(data);
-
-  // If the list is empty or the position is 0, insert the new node at the head
-  if (llist == null || position == 0) {
-    newNode.next = llist;
-    return newNode;
+function deleteNode(llist, position) {
+  // Write your code here
+  // If the list is empty
+  if (llist == null) {
+    return null;
   }
 
-  // Traverse the list to the position before the insertion point
-  let current = llist;
-  let i = 0;
-  while (i < position - 1 && current.next != null) {
-    current = current.next;
-    i++;
+  let currentNode = llist;
+
+  // If the head needs to be removed
+  if (position === 0) {
+    return currentNode.next; // Return the next node as the new head
   }
 
-  // Insert the new node at the desired position
-  newNode.next = current.next;
-  current.next = newNode;
+  // Traverse the list to find the node before the one to delete
+  for (let i = 0; currentNode != null && i < position - 1; i++) {
+    currentNode = currentNode.next;
+  }
 
-  return llist;
+  // If the position is more than the number of nodes
+  if (currentNode == null || currentNode.next == null) {
+    return llist;
+  }
+
+  // Node currentNode.next is the node to be deleted
+  currentNode.next = currentNode.next.next;
+
+  return llist; // Return the head of the modified list
 }
 
 function main() {
@@ -93,13 +97,11 @@ function main() {
     llist.insertNode(llistItem);
   }
 
-  const data = parseInt(readLine(), 10);
-
   const position = parseInt(readLine(), 10);
 
-  let llist_head = insertNodeAtPosition(llist.head, data, position);
+  let llist1 = deleteNode(llist.head, position);
 
-  printSinglyLinkedList(llist_head, " ", ws);
+  printSinglyLinkedList(llist1, " ", ws);
   ws.write("\n");
 
   ws.end();

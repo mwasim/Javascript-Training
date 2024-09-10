@@ -55,6 +55,21 @@ function printSinglyLinkedList(node, sep, ws) {
 // You only need to complete this method.
 
 function findMergeNode(headA, headB) {
+  /*
+     It uses two pointers to traverse the lists and switches to the head of the other list 
+     when reaching the end, ensuring they meet at the merge point.
+    */
+  let ptrA = headA;
+  let ptrB = headB;
+
+  while (ptrA !== ptrB) {
+    ptrA = ptrA === null ? headB : ptrA.next;
+    ptrB = ptrB === null ? headA : ptrB.next;
+  }
+
+  return ptrA.data;
+
+  /*
   let currentA = headA;
   let currentB = headB;
 
@@ -94,7 +109,7 @@ function findMergeNode(headA, headB) {
   }
 
   // Return the data at the merge point
-  return currentA.data;
+  return currentA.data;*/
 }
 
 function main() {
